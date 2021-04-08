@@ -23,7 +23,7 @@ client.setValue('name','Mani');
 
 client.getValue('name').then(val => console.log(val)).catch(err => console.error(err));
 
-client.setExpiry('name');
+client.setExpiry('name',60);
 
 client.getExpiry('name').then(val => console.log(val)).catch(err => console.error(err));
 ```
