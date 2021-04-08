@@ -1,0 +1,33 @@
+{
+  "name": "mk-redis-connect",
+  "version": "1.0.0",
+  "description": "This package is used to connect with redis and get,set the data.",
+  "main": "lib/redis.js",
+  "types": "lib/",
+  "scripts": {
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/manikandanr4466/mk-redis-connect.git"
+  },
+  "keywords": [
+    "redis",
+    "connect",
+    "redis-connect"
+  ],
+  "author": "Manikandan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/manikandanr4466/mk-redis-connect/issues"
+  },
+  "homepage": "https://github.com/manikandanr4466/mk-redis-connect#readme",
+  "dependencies": {
+    "@types/redis": "^2.8.28",
+    "redis": "^3.1.0"
+  },
+  "devDependencies": {
+    "typescript": "^4.2.4"
+  }
+}
