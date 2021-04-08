@@ -1,6 +1,6 @@
 {
   "name": "mk-redis-connect",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "This package is used to connect with redis and get,set the data.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
