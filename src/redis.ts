@@ -1,6 +1,6 @@
 import * as redis from 'redis';
 
-class Redis {
+export class Redis {
     
     public options: Object = {
         host : '127.0.0.1', 
@@ -55,5 +55,3 @@ class Redis {
         });
     }
 }
-
-export default Redis;

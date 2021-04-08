@@ -2,7 +2,7 @@
   "name": "mk-redis-connect",
   "version": "1.0.0",
   "description": "This package is used to connect with redis and get,set the data.",
-  "main": "lib/redis.js",
+  "main": "lib/index.js",
   "types": "lib/",
   "scripts": {
     "build": "tsc",
