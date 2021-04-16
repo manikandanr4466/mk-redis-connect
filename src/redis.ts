@@ -19,21 +19,36 @@ export class Redis {
         return this.client;
     }
 
-    getValue(key: string) {
-        return new Promise((resolve, reject) => {
+    async getValue(key: string) {
+        try {
+            let delta: any;
+            let expiry: any = await this.getExpiry(key);
             this.client.get(key,(err: any, reply: any) => {
-                if(err) reject(err);
-                resolve(reply);
+                if(err) return Promise.reject(err);
+                if(!reply || this.xfetch(delta, new Date().getTime() + expiry)){
+                    //TODO: Recompute
+                } else {
+                    return Promise.resolve(reply);
+                }
             });
-        })
+        } catch (error) {
+            console.error(error);   
+        }
     }
 
-    setValue(key: string, value: any) {
+    setValue(key: string, value: any, expiry?: number) {
         return new Promise((resolve, reject) => {
-            this.client.set(key,value,(err: any, reply: any) => {
-                if(err) reject(err);
-                resolve(reply);
-            })
+            if(!expiry) {
+                this.client.set(key,value,(err: any, reply: any) => {
+                    if(err) reject(err);
+                    resolve(reply);
+                });
+            } else {
+                this.client.setex(key,value, expiry, (err: any, reply: any) => {
+                    if(err) reject(err);
+                    resolve(reply);
+                });
+            }
         });
     }
 
@@ -53,5 +68,9 @@ export class Redis {
                 resolve(reply);
             });
         });
+    }
+
+    xfetch(delta: any, expiry: any, beta: number = 1.0) {
+        return (new Date().getTime()) - (delta * beta * Math.log(Math.random())) >= expiry;
     }
 }
