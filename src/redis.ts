@@ -32,7 +32,7 @@ export class Redis {
                 }
             });
         } catch (error) {
-            console.error(error);   
+            // console.error(error);   
         }
     }
 
